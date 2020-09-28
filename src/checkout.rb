@@ -5,9 +5,11 @@ class Checkout
 
   def initialize(lines_of_rules)
     @rules = lines_of_rules.map { |line| Rule.new(line) }
+    @goods = Hash.new(0)
   end
 
   def scan(item)
+    goods[item] += 1
   end
 
   def total

@@ -6,7 +6,7 @@
 ## Status
 
 - [x] Design
-- [ ] Implementation (readiness 10%)
+- [ ] Implementation (readiness 20%)
 
 ## Assumptions made
 
