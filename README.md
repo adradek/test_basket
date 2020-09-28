@@ -2,7 +2,8 @@
 
 ## Status
 
-Designing (readiness 5%)
+- [x] Design
+- [ ] Implementeation (readiness 10%)
 
 ## Assumptions made
 
