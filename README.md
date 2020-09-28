@@ -1,5 +1,8 @@
 # Test Basket
 
+- Installation: `bundle install`
+- Run tests: `bundle exec rspec`
+
 ## Status
 
 - [x] Design
