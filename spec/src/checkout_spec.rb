@@ -81,6 +81,22 @@ describe Checkout do
         expect(co.total).to equal(10 * 30 - 3 * 15)
       end
     end
+
+    context 'basket total test' do
+      before { rules << "total, total discount, 150, 20" }
+
+      it 'applies total discount if condition is met' do
+        co = described_class.new(rules)
+        co.feed("A A A A A A A A A A A")
+        expect(co.total).to equal(11 * 30 - 20)
+      end
+
+      it 'doesnt apply total discount if condition not met' do
+        co = described_class.new(rules)
+        co.feed("A A")
+        expect(co.total).to equal(2 * 30)
+      end
+    end
   end
 
   context 'control tests (provided by client)' do
