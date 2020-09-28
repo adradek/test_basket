@@ -3,7 +3,7 @@ require_relative 'src/checkout.rb'
 RULES = File.read('default_rules.txt').split("\n").reject(&:empty?)
 
 def help!
-  puts "The following rules works here:"
+  puts "The following rules work here:"
   RULES.each { |rule| puts "- #{rule}" }
   puts "\n- Enter the set of selected goods (e.g.: A, B, C, D, A)"
   puts "- To exit type 'exit', 'e' or 'q'"
