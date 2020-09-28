@@ -8,6 +8,14 @@ class Checkout
     @goods = Hash.new(0)
   end
 
+  def feed(line_of_items)
+    line_of_items
+      .split(/[ ,]/)
+      .map(&:strip)
+      .reject { |item| item.size.zero? }
+      .each { |item| scan(item) }
+  end
+
   def scan(item)
     goods[item] += 1
   end

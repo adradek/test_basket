@@ -13,7 +13,6 @@ class Rule
 
   def apply(goods:, sum:)
     if price?
-      binding.pry
       sum + goods[target] * args[0].to_i
     end
   end
