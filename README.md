@@ -2,11 +2,14 @@
 
 - Installation: `bundle install`
 - Run tests: `bundle exec rspec`
+- Run demo script: `ruby script.rb`
 
 ## Status
 
+Complete!
+
 - [x] Design
-- [ ] Implementation (readiness 80%)
+- [x] Implementation (100%)
 
 ## Assumptions made
 
