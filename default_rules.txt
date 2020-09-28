@@ -1,0 +1,7 @@
+A, price, 30
+B, price, 20
+C, price, 50
+D, price, 15
+A, quantitive discount, 3, 15
+B, quantitive discount, 2, 5
+total, total discount, 150, 20
