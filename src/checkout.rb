@@ -22,7 +22,9 @@ class Checkout
 
   def total
     sum = 0
-    price_rules.each { |rule| sum = rule.apply(goods: goods, sum: sum) }
+    price_rules
+      .concat(partial_discount_rules)
+      .each { |rule| sum = rule.apply(goods: goods, sum: sum) }
     sum
   end
 

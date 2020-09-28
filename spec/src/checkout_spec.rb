@@ -1,7 +1,7 @@
 require_relative '../../src/checkout.rb'
 
 describe Checkout do
-  context 'without doscoutns' do
+  context 'without discoutns' do
     context 'one rule, one type' do
       let(:rules) { ["A, price, 30" ] }
 
@@ -51,6 +51,35 @@ describe Checkout do
   end
 
   context 'with discounts' do
-    context 'only'
+    let(:rules) do
+      [
+        "A, price, 30",
+        "B, price, 20",
+        "C, price, 50",
+        "D, price, 15"
+      ]
+    end
+
+    context 'multi-buy discounts only' do
+      before { rules << "A, quantitive discount, 3, 15" }
+
+      it "gives the discount if the condition is met" do
+        co = described_class.new(rules)
+        co.feed("A A A")
+        expect(co.total).to equal(3 * 30 - 15)
+      end
+
+      it "doesn't give the discount if the condition not met" do
+        co = described_class.new(rules)
+        co.feed("A A")
+        expect(co.total).to equal(2 * 30)
+      end
+
+      it "multyplies the discount if the condition is met several times" do
+        co = described_class.new(rules)
+        co.feed("A A A A A A A A A A")  # ten As
+        expect(co.total).to equal(10 * 30 - 3 * 15)
+      end
+    end
   end
 end
