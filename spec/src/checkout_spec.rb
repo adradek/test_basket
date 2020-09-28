@@ -82,4 +82,32 @@ describe Checkout do
       end
     end
   end
+
+  context 'control tests (provided by client)' do
+    let(:rules) do
+      [
+        "A, price, 30",
+        "B, price, 20",
+        "C, price, 50",
+        "D, price, 15",
+        "A, quantitive discount, 3, 15",
+        "B, quantitive discount, 2, 5",
+        "total, total discount, 150, 20"
+      ]
+    end
+
+    {
+      "A, B, C" => 100,
+      "B, A, B, A, A" => 110,
+      "C, B, A, A, D, A, B" => 155,
+      "C, A, D, A, A" => 140
+
+    }.each do |items, proper_sum|
+      it "calculates the total properly for #{items} set" do
+        co = Checkout.new(rules)
+        items.split(",").map(&:strip).each { |item| co.scan(item) }
+        expect(co.total).to equal(proper_sum)
+      end
+    end
+  end
 end
